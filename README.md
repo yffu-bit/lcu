@@ -4,7 +4,7 @@
 幫助小五學生掌握中文人物描寫技巧
 
 ## 🔗 立即開始
-點擊這裡：https://yourname.github.io/repo-name
+點擊這裡：https://yffu-bit/lcu
 
 ## 📖 使用說明
 1. 完成「探究活動一」比較學習
