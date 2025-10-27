@@ -329,18 +329,18 @@
             <p>要成為超級偵探，我們需要豐富的詞語寶庫！點擊下面的詞語，學習怎麼用它們來描述人物。</p>
             
             <div class="vocab-wall">
-                <div class="vocab-card" onclick="alert('例句：他長得很高。/他身材高大挺拔，在人群中特別顯眼。')">高</div>
-                <div class="vocab-card" onclick="alert('例句：她個子矮矮的。/她雖然個子嬌小，但動作十分靈活敏捷。')">矮</div>
-                <div class="vocab-card" onclick="alert('例句：他有點胖，很可愛。/他體型圓潤，笑起來臉頰肉嘟嘟的，十分討人喜歡。')">胖</div>
-                <div class="vocab-card" onclick="alert('例句：她瘦瘦的，跑得很快。/她身形纖瘦卻充滿活力，像一隻輕盈的小鹿。')">瘦</div>
-                <div class="vocab-card" onclick="alert('例句：她有一頭長頭髮。/她烏黑亮麗的長髮如瀑布般披在肩上，隨風飄逸。')">長頭髮</div>
-                <div class="vocab-card" onclick="alert('例句：他的短髮很整齊。/他留着利落的短髮，顯得精神抖擻、乾淨俐落。')">短頭髮</div>
-                <div class="vocab-card" onclick="alert('例句：她有大大的眼睛。/她有一雙水汪汪的大眼睛，像會說話似的充滿靈氣。')">大眼睛</div>
-                <div class="vocab-card" onclick="alert('例句：他的小眼睛很有神。/他那雙細長的眼睛總是閃著智慧的光芒，雖然不大卻十分有神。')">小眼睛</div>
-                <div class="vocab-card" onclick="alert('例句：她的臉圓圓的，像蘋果。/她擁有可愛的圓臉，配上甜甜的笑容，像個精緻的瓷娃娃。')">圓臉</div>
-                <div class="vocab-card" onclick="alert('例句：他的臉方方的，很帥氣。/他方正的下巴和輪廓分明的臉型，給人一種堅毅可靠的感覺。')">方臉</div>
-                <div class="vocab-card" onclick="alert('例句：他總是戴著一副眼鏡。/他鼻樑上架著一副黑框眼鏡，更添幾分書卷氣息。')">戴眼鏡</div>
-                <div class="vocab-card" onclick="alert('例句：她笑起來有兩個酒窩。/她一笑起來，臉頰上就浮現兩個淺淺的酒窩，甜美得讓人移不開眼。')">酒窩</div>
+                <div class="vocab-card" data-word="高">高</div>
+                <div class="vocab-card" data-word="矮">矮</div>
+                <div class="vocab-card" data-word="胖">胖</div>
+                <div class="vocab-card" data-word="瘦">瘦</div>
+                <div class="vocab-card" data-word="長頭髮">長頭髮</div>
+                <div class="vocab-card" data-word="短頭髮">短頭髮</div>
+                <div class="vocab-card" data-word="大眼睛">大眼睛</div>
+                <div class="vocab-card" data-word="小眼睛">小眼睛</div>
+                <div class="vocab-card" data-word="圓臉">圓臉</div>
+                <div class="vocab-card" data-word="方臉">方臉</div>
+                <div class="vocab-card" data-word="戴眼鏡">戴眼鏡</div>
+                <div class="vocab-card" data-word="酒窩">酒窩</div>
             </div>
             
             <p><strong>提示：</strong>試著用這些詞語來描述你的同學！</p>
@@ -435,96 +435,97 @@
     </div>
 
     <script>
-// 自定義彈出視窗函數
-function showExample(word, simpleExample, advancedExample) {
-    // 創建彈出層
-    const overlay = document.createElement('div');
-    overlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-    `;
-    
-    // 創建彈出內容
-    const popup = document.createElement('div');
-    popup.style.cssText = `
-        background: white;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        max-width: 500px;
-        width: 90%;
-        text-align: center;
-    `;
-    
-    popup.innerHTML = `
-        <h3 style="font-size: 24px; color: #4b6cb7; margin-bottom: 20px;">📚 ${word}</h3>
-        
-        <div style="margin-bottom: 20px; text-align: left;">
-            <h4 style="font-size: 18px; color: #ff6b6b; margin-bottom: 10px;">👶 簡單例句</h4>
-            <p style="font-size: 20px; line-height: 1.5; background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ff6b6b;">
-                ${simpleExample}
-            </p>
-        </div>
-        
-        <div style="text-align: left;">
-            <h4 style="font-size: 18px; color: #4ecdc4; margin-bottom: 10px;">🌟 進階例句</h4>
-            <p style="font-size: 20px; line-height: 1.5; background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #4ecdc4;">
-                ${advancedExample}
-            </p>
-        </div>
-        
-        <button onclick="this.parentElement.parentElement.remove()" 
-                style="margin-top: 25px; padding: 12px 30px; font-size: 18px; background: #4b6cb7; color: white; border: none; border-radius: 8px; cursor: pointer;">
-            關閉
-        </button>
-    `;
-    
-    overlay.appendChild(popup);
-    document.body.appendChild(overlay);
-    
-    // 點擊背景也可關閉
-    overlay.addEventListener('click', function(e) {
-        if (e.target === overlay) {
-            overlay.remove();
-        }
-    });
-}
-
-// 為詞語卡更新點擊事件
-function initVocabCards() {
-    const vocabData = {
-        '高': ['他長得很高。', '他身材高大挺拔，在人群中特別顯眼。'],
-        '矮': ['她個子矮矮的。', '她雖然個子嬌小，但動作十分靈活敏捷。'],
-        '胖': ['他有點胖，很可愛。', '他體型圓潤，笑起來臉頰肉嘟嘟的，十分討人喜歡。'],
-        '瘦': ['她瘦瘦的，跑得很快。', '她身形纖瘦卻充滿活力，像一隻輕盈的小鹿。'],
-        '長頭髮': ['她有一頭長頭髮。', '她烏黑亮麗的長髮如瀑布般披在肩上，隨風飄逸。'],
-        '短頭髮': ['他的短髮很整齊。', '他留著利落的短髮，顯得精神抖擻、乾淨俐落。'],
-        '大眼睛': ['她有大大的眼睛。', '她有一雙水汪汪的大眼睛，像會說話似的充滿靈氣。'],
-        '小眼睛': ['他的小眼睛很有神。', '他那雙細長的眼睛總是閃著智慧的光芒，雖然不大卻十分有神。'],
-        '圓臉': ['她的臉圓圓的，像蘋果。', '她擁有可愛的圓臉，配上甜甜的笑容，像個精緻的瓷娃娃。'],
-        '方臉': ['他的臉方方的，很帥氣。', '他方正的下巴和輪廓分明的臉型，給人一種堅毅可靠的感覺。'],
-        '戴眼鏡': ['他總是戴著一副眼鏡。', '他鼻樑上架著一副黑框眼鏡，更添幾分書卷氣息。'],
-        '酒窩': ['她笑起來有兩個酒窩。', '她一笑起來，臉頰上就浮現兩個淺淺的酒窩，甜美得讓人移不開眼。']
-    };
-    
-    const vocabCards = document.querySelectorAll('.vocab-card');
-    vocabCards.forEach(card => {
-        const word = card.textContent;
-        if (vocabData[word]) {
-            card.addEventListener('click', function() {
-                showExample(word, vocabData[word][0], vocabData[word][1]);
+        // 自定義彈出視窗函數
+        function showExample(word, simpleExample, advancedExample) {
+            // 創建彈出層
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            `;
+            
+            // 創建彈出內容
+            const popup = document.createElement('div');
+            popup.style.cssText = `
+                background: white;
+                padding: 30px;
+                border-radius: 15px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                max-width: 500px;
+                width: 90%;
+                text-align: center;
+            `;
+            
+            popup.innerHTML = `
+                <h3 style="font-size: 24px; color: #4b6cb7; margin-bottom: 20px;">📚 ${word}</h3>
+                
+                <div style="margin-bottom: 20px; text-align: left;">
+                    <h4 style="font-size: 18px; color: #ff6b6b; margin-bottom: 10px;">👶 簡單例句</h4>
+                    <p style="font-size: 20px; line-height: 1.5; background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ff6b6b;">
+                        ${simpleExample}
+                    </p>
+                </div>
+                
+                <div style="text-align: left;">
+                    <h4 style="font-size: 18px; color: #4ecdc4; margin-bottom: 10px;">🌟 進階例句</h4>
+                    <p style="font-size: 20px; line-height: 1.5; background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #4ecdc4;">
+                        ${advancedExample}
+                    </p>
+                </div>
+                
+                <button onclick="this.parentElement.parentElement.remove()" 
+                        style="margin-top: 25px; padding: 12px 30px; font-size: 18px; background: #4b6cb7; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                    關閉
+                </button>
+            `;
+            
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+            
+            // 點擊背景也可關閉
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    overlay.remove();
+                }
             });
         }
-    });
-}
+
+        // 為詞語卡更新點擊事件
+        function initVocabCards() {
+            const vocabData = {
+                '高': ['他長得很高。', '他身材高大挺拔，在人群中特別顯眼。'],
+                '矮': ['她個子矮矮的。', '她雖然個子嬌小，但動作十分靈活敏捷。'],
+                '胖': ['他有點胖，很可愛。', '他體型圓潤，笑起來臉頰肉嘟嘟的，十分討人喜歡。'],
+                '瘦': ['她瘦瘦的，跑得很快。', '她身形纖瘦卻充滿活力，像一隻輕盈的小鹿。'],
+                '長頭髮': ['她有一頭長頭髮。', '她烏黑亮麗的長髮如瀑布般披在肩上，隨風飄逸。'],
+                '短頭髮': ['他的短髮很整齊。', '他留著利落的短髮，顯得精神抖擻、乾淨俐落。'],
+                '大眼睛': ['她有大大的眼睛。', '她有一雙水汪汪的大眼睛，像會說話似的充滿靈氣。'],
+                '小眼睛': ['他的小眼睛很有神。', '他那雙細長的眼睛總是閃著智慧的光芒，雖然不大卻十分有神。'],
+                '圓臉': ['她的臉圓圓的，像蘋果。', '她擁有可愛的圓臉，配上甜甜的笑容，像個精緻的瓷娃娃。'],
+                '方臉': ['他的臉方方的，很帥氣。', '他方正的下巴和輪廓分明的臉型，給人一種堅毅可靠的感覺。'],
+                '戴眼鏡': ['他總是戴著一副眼鏡。', '他鼻樑上架著一副黑框眼鏡，更添幾分書卷氣息。'],
+                '酒窩': ['她笑起來有兩個酒窩。', '她一笑起來，臉頰上就浮現兩個淺淺的酒窩，甜美得讓人移不開眼。']
+            };
+            
+            const vocabCards = document.querySelectorAll('.vocab-card');
+            vocabCards.forEach(card => {
+                const word = card.getAttribute('data-word');
+                if (vocabData[word]) {
+                    card.addEventListener('click', function() {
+                        showExample(word, vocabData[word][0], vocabData[word][1]);
+                    });
+                }
+            });
+        }
+
         function generateReport() {
             const overview = document.getElementById('overview').value;
             const features = document.getElementById('features').value;
@@ -545,7 +546,7 @@ function initVocabCards() {
                 report += `🎨 神奇比喻：${metaphor}\n`;
             }
             
-            report += `\n---組織以上重點為一段通順的文字，然後在padlet上分享，讓同學猜猜你在描寫哪位同學或老師`;
+            report += `\n--- 組織以上重點為一段通順的文字，然後在Padlet上分享，讓同學猜猜你在描寫哪位同學或老師 ---`;
             
             document.getElementById('reportText').textContent = report;
             document.getElementById('reportOutput').style.display = 'block';
@@ -588,10 +589,16 @@ function initVocabCards() {
                     setTimeout(() => {
                         this.style.backgroundColor = '';
                     }, 500);
-               initVocabCards(); //
                 });
             });
+            // 初始化詞語卡
+            initVocabCards();
         });
     </script>
 </body>
 </html>
+     
+        
+        
+         
+          
